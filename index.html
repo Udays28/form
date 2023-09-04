@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Form</title>
+    <style type="text/css">
+        #main{
+            border: 2px solid black;
+            margin-left: 330px;
+            padding: 50px;
+            padding-left: 30px;
+            width:500px; 
+            border-radius: 10px;
+            box-shadow: 5px 8px 10px;
+            background-color: #CCCFBC;
+        }
+        .name{
+            width:400px; 
+            height:30px;
+            border-radius: 10px; 
+            box-shadow: 5px 5px 10px;
+            margin-bottom: 8px; 
+            background-color: #dbf3db;
+        }
+        .quarry{
+            width:400px; 
+            height:200px;
+            border-radius: 10px;  
+            box-shadow: 5px 5px 10px;
+            background-color: #dbf3db;
+        }
+        .submit{
+            width: 200px;
+            height: 35px;
+            box-shadow: 5px 5px 10px;
+            border-radius: 10px;
+            background-color: #82d382;
+            text-align: center;
+            font-weight: bolder;
+        }
+        ::placeholder{
+            text-align: center;
+            font-weight: bolder;
+            
+        }
+        h1{
+            padding-top: 10px;
+            font-weight: bolder;
+            font-size: 64px;
+            font-family: Georgia, serif;
+            text-shadow: 3px 3px 7px;
+        
+        }
+        .name:hover {
+            background-color: rgb(226, 226, 177);
+            box-shadow: 10px 8px 7px;
+        }
+        .submit:hover {
+            background-color: rgb(226, 226, 177);
+            box-shadow: 10px 8px 7px;
+        }
+        .quarry:hover {
+            background-color: rgb(226, 226, 177);
+            box-shadow: 10px 8px 7px;
+        }
+
+
+    </style>
+</head>
+
+<body bgcolor="lightgray"></body>
+    <form name="submit-to-google-sheet">
+        
+        <center>
+            <h1>Contact Us</h1>
+        </center>
+        <div id="main">
+            <center>
+                <input type="text"name="name"class="name" placeholder="Enter Your Name"><br><br>
+                <input type="email"name="email" class="name" placeholder="Enter Your Email"><br><br>
+                <input type="text"name="phone" class="name" placeholder="Enter your phone no."><br><br>
+                <input type="text"name="quarry"class="quarry" placeholder="Your Quarry"><br><br>
+                <input type="submit" name="submit"class="submit" value="submit">
+            </center>
+
+
+
+            </div>
+        
+
+    </form>
+        
+<script>
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbzHCOmIG_XvM2BgZRrPVSL0M4THE-jYyveFqON9JLMXc7QDGz3esMWgS2bsvj_NNffp/exec'
+  const form = document.forms['submit-to-google-sheet']
+
+  form.addEventListener('submit', e => {
+    e.preventDefault()
+    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+      .then(response => console.log('Success!', response))
+      .catch(error => console.error('Error!', error.message))
+  })
+</script>
+</body>
+</html>
